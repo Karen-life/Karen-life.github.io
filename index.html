@@ -6,20 +6,22 @@
 <title>Karen Crasto | HR and People Analytics</title>
 <meta name="description" content="Personal website of Karen Crasto: HR experience, education, skills and projects.">
 <style>
-:root{--ink:#1a1f2b;--bg:#ffffff;--soft:#eef4fa;--blue:#0b4f8a;--orange:#b34700;--line:#c7d3e0}
+:root{--ink:#1a1f2b;--bg:#ffffff;--soft:#eef4fa;--blue:#0b4f8a;--orange:#b34700;--line:#c7d3e0;--hdr:#0b4f8a}
+:root[data-theme="dark"]{--ink:#e8edf5;--bg:#10151f;--soft:#1a2230;--blue:#8cc0f2;--orange:#ffa45c;--line:#34435a;--hdr:#0b3a66}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+html{scroll-padding-top:4.5rem}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:1.125rem;line-height:1.65;color:var(--ink);background:var(--bg)}
 h1,h2,h3,nav,.sans{font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-header{background:var(--blue);color:#fff;padding:3rem 1.25rem 2.5rem}
+header{background:var(--hdr);color:#fff;padding:3rem 1.25rem 2.5rem}
 .wrap{max-width:46rem;margin:0 auto}
 header h1{font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.1;margin:0 0 .75rem}
 header p{margin:0 0 1.25rem;font-size:1.2rem}
 .portrait{display:inline-block;border:2px dashed #fff;padding:.5rem 1rem;font-family:"Segoe UI",Arial,sans-serif;font-weight:700}
-.portrait-img{max-width:12rem;height:auto;border-radius:50%;border:4px solid #fff}
-nav{position:sticky;top:0;background:#fff;border-bottom:3px solid var(--orange);z-index:5}
+.portrait-img{width:100%;max-width:12rem;height:auto;object-fit:cover;display:block;border-radius:50%;border:4px solid #fff}
+nav{position:sticky;top:0;background:var(--bg);border-bottom:3px solid var(--orange);z-index:5}
 nav ul{list-style:none;margin:0 auto;padding:.5rem 1.25rem;max-width:46rem;display:flex;flex-wrap:wrap;gap:.25rem 1.1rem}
 nav a{font-size:1rem;font-weight:600}
 main{padding:0 1.25rem}
@@ -34,6 +36,23 @@ li{margin-bottom:.35rem}
 .cols{display:grid;gap:1.5rem}
 @media(min-width:40rem){.cols{grid-template-columns:1fr 1fr}}
 footer{max-width:46rem;margin:0 auto;padding:1.75rem 1.25rem;font-size:1rem}
+
+nav a[aria-current="true"]{font-weight:800;border-bottom:3px solid var(--orange)}
+button{font:inherit;font-family:"Segoe UI",Arial,sans-serif;font-size:1rem;font-weight:600;color:var(--blue);background:var(--bg);border:2px solid var(--blue);border-radius:.4rem;padding:.3rem .8rem;cursor:pointer}
+button:hover{background:var(--soft)}
+button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;margin:0 0 1rem}
+details{border:1px solid var(--line);border-radius:.4rem;margin:0 0 .8rem;background:var(--soft)}
+summary{cursor:pointer;padding:.7rem 1rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";font-weight:800;color:var(--orange);font-family:"Segoe UI",Arial,sans-serif}
+details[open]>summary::before{content:"\2212  "}
+summary:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+summary h3{display:inline;margin:0}
+summary .when{margin:.2rem 0 0 1.4rem}
+details>ul{margin:0;padding:0 1rem 1rem 2.5rem}
+.totop{position:fixed;right:1rem;bottom:1rem;display:none;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.totop.show{display:block}
 </style>
 </head>
 <body>
@@ -41,7 +60,7 @@ footer{max-width:46rem;margin:0 auto;padding:1.75rem 1.25rem;font-size:1rem}
   <div class="wrap">
     <h1>Karen Crasto</h1>
     <p>HR enthusiasts. Excited to work with people and use data to make ecidence based solutions</p>
-    <span class="portrait">Portrait coming soon</span>
+    <img class="portrait-img" src="profile.jpg" alt="Portrait of Karen Crasto" width="800" height="800">
   </div>
 </header>
 
@@ -57,6 +76,7 @@ footer{max-width:46rem;margin:0 auto;padding:1.75rem 1.25rem;font-size:1rem}
     <li><a href="#languages">Languages</a></li>
     <li><a href="#cv">CV</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><button type="button" id="theme" aria-pressed="false">Dark mode</button></li>
   </ul>
 </nav>
 
@@ -68,10 +88,9 @@ footer{max-width:46rem;margin:0 auto;padding:1.75rem 1.25rem;font-size:1rem}
 
 <section id="experience">
   <h2>Experience</h2>
+  <div class="tools"><button type="button" id="expand">Expand all</button><button type="button" id="collapse">Collapse all</button></div>
 
-  <h3>Growth Gravy: HR Associate</h3>
-  <p class="when">Aug 2024 – Nov 2025</p>
-  <ul class="plain">
+  <details open><summary><h3>Growth Gravy: HR Associate</h3><p class="when">Aug 2024 – Nov 2025</p></summary><ul>
     <li>Led end-to-end recruitment across creative, marketing, and operations roles.</li>
     <li>Managed entire interview process, onboarding, reference checks, negotiation and offer rollouts.</li>
     <li>Oversaw attendance and assisted in payroll for 60+ employees.</li>
@@ -79,19 +98,15 @@ footer{max-width:46rem;margin:0 auto;padding:1.75rem 1.25rem;font-size:1rem}
     <li>Executed employee engagement initiatives and internal training workshops, like Brand Think Tank.</li>
     <li>Conducted regular 1:1s, resolved employee concerns, and implemented retention strategies, leading to a 35% improvement in employee retention.</li>
     <li>Managed full employee lifecycle: performance reviews, exits, and documentation.</li>
-  </ul>
+  </ul></details>
 
-  <h3>King Edward Memorial Hospital (KEM Hospital, Mumbai): Clinical intern</h3>
-  <p class="when">June 2023 – Jul 2023</p>
-  <ul class="plain">
+  <details open><summary><h3>King Edward Memorial Hospital (KEM Hospital, Mumbai): Clinical intern</h3><p class="when">June 2023 – Jul 2023</p></summary><ul>
     <li>Conducted behavioural observations, supported psychometric assessments and gathered detailed case histories while assisting psychiatrists and affected families in a clinical setting.</li>
-  </ul>
+  </ul></details>
 
-  <h3>The Evolve Mind-clinic (Matunga/Worli): Clinical intern</h3>
-  <p class="when">June 2022 – Sept 2022</p>
-  <ul class="plain">
+  <details open><summary><h3>The Evolve Mind-clinic (Matunga/Worli): Clinical intern</h3><p class="when">June 2022 – Sept 2022</p></summary><ul>
     <li>Conducted psychometric evaluations (MCMI, MMPI), collaborated with a psychiatrist on case insights, managed two clinic operations, and engaged directly with clients to understand behavioural and mental health needs.</li>
-  </ul>
+  </ul></details>
 </section>
 
 <section id="education">
@@ -175,5 +190,26 @@ footer{max-width:46rem;margin:0 auto;padding:1.75rem 1.25rem;font-size:1rem}
 <footer>
   <p>&copy; 2026 Karen Crasto. Built with the help of generative AI; content and decisions are my own.</p>
 </footer>
+<button type="button" class="totop" id="totop">Back to top</button>
+<script>
+(function(){
+var root=document.documentElement,btn=document.getElementById('theme');
+function setTheme(t){root.setAttribute('data-theme',t);btn.textContent=t==='dark'?'Light mode':'Dark mode';btn.setAttribute('aria-pressed',t==='dark'?'true':'false');}
+var saved=null;try{saved=localStorage.getItem('theme');}catch(e){}
+setTheme(saved||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
+btn.addEventListener('click',function(){var t=root.getAttribute('data-theme')==='dark'?'light':'dark';setTheme(t);try{localStorage.setItem('theme',t);}catch(e){}});
+function all(open){document.querySelectorAll('#experience details').forEach(function(d){d.open=open;});}
+document.getElementById('expand').addEventListener('click',function(){all(true);});
+document.getElementById('collapse').addEventListener('click',function(){all(false);});
+var top=document.getElementById('totop');
+top.addEventListener('click',function(){window.scrollTo({top:0});});
+window.addEventListener('scroll',function(){top.classList.toggle('show',window.scrollY>600);});
+if('IntersectionObserver' in window){
+var links={};document.querySelectorAll('nav a[href^="#"]').forEach(function(a){links[a.getAttribute('href').slice(1)]=a;});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].removeAttribute('aria-current');});if(links[e.target.id])links[e.target.id].setAttribute('aria-current','true');}});},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('main section').forEach(function(x){io.observe(x);});
+}
+})();
+</script>
 </body>
 </html>
